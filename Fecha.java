@@ -1,16 +1,27 @@
 package fecha;
-
+/**
+ * Este es el examen en el cual voy a 
+ * realizar unos pequeÃ±os cambios
+ * 
+ * @author mromero
+ */
 public class Fecha {
-	private int d; //día
+	private int d; //dï¿½a
 	private int m; //mes
-	private int a; //año
+	private int a; //aï¿½o
 
 	
 	public Fecha() {
 
 	}
 
-	
+	/**
+	 * Esto es un metodo que devuelve el dia mes y aÃ±o
+	 * 
+	 * @param dia
+	 * @param mes
+	 * @param anio
+	 */
 	public Fecha(int dia, int mes, int anio) {
 		this.d = dia;
 		this.m = mes;
@@ -18,7 +29,11 @@ public class Fecha {
 	}
 
 	
-	
+	/**
+	 * Esto es un metodo que tiene un switch y que 
+	 * devuelve diaCorrecto, mesCorrecto y aÃ±oCorrecto
+	 * @return
+	 */
 	public boolean fechaCorrecta() {
 		boolean diaCorrecto, mesCorrecto, anioCorrecto;
 		anioCorrecto = a > 0;
@@ -43,13 +58,13 @@ public class Fecha {
 		return diaCorrecto && mesCorrecto && anioCorrecto;
 	}
 
-	// Método esBisiesto. Solo lo usa fechaCorrecta, por eso es privado
+	// Mï¿½todo esBisiesto. Solo lo usa fechaCorrecta, por eso es privado
 	private boolean esBisiesto() {
 		boolean esBisiesto = (a % 4 == 0 && a % 100 != 0 || a % 400 == 0);
 		return esBisiesto;
 	}
 
-	// Método diaSiguiente
+	// Mï¿½todo diaSiguiente
 	public void diaSiguiente() {
 		d++;
 		if (!fechaCorrecta()) {
@@ -62,7 +77,7 @@ public class Fecha {
 		}
 	}
 
-	// Método toString
+	// Mï¿½todo toString
 	public String toString() {
 		if (d < 10 && m < 10) {
 			return "0" + d + "-0" + m + "-" + a;
