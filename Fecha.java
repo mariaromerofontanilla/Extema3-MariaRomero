@@ -1,9 +1,9 @@
 package fecha;
 
 public class Fecha {
-	private int d; //día
-	private int m; //mes
-	private int a; //año
+	private int dia; //dï¿½a
+	private int mes; //mes
+	private int anho; //aï¿½o
 
 	
 	public Fecha() {
@@ -12,67 +12,59 @@ public class Fecha {
 
 	
 	public Fecha(int dia, int mes, int anio) {
-		this.d = dia;
-		this.m = mes;
-		this.a = anio;
+		this.dia = dia;
+		this.mes = mes;
+		this.anho = anio;
 	}
 
 	
 	
 	public boolean fechaCorrecta() {
-		boolean diaCorrecto, mesCorrecto, anioCorrecto;
-		anioCorrecto = a > 0;
-		mesCorrecto = m >= 1 && m <= 12;
-		switch (m) {
+		boolean diaCorrecto;
+		boolean mesCorrecto;
+		boolean anioCorrecto;
+		anioCorrecto = anho > 0;
+		mesCorrecto = mes >= 1 && mes <= 12;
+		boolean diaMayor1 = dia >= 1;
+		switch (mes) {
 		case 2:
 			if (esBisiesto()) {
-				diaCorrecto = d >= 1 && d <= 29;
+				diaCorrecto = diaMayor1 && dia <= 29;
 			} else {
-				diaCorrecto = d >= 1 && d <= 28;
+				diaCorrecto = diaMayor1 && dia <= 28;
 			}
 			break;
 		case 4:
 		case 6:
 		case 9:
 		case 11:
-			diaCorrecto = d >= 1 && d <= 30;
+			diaCorrecto = diaMayor1 && dia <= 30;
 			break;
 		default:
-			diaCorrecto = d >= 1 && d <= 31;
+			diaCorrecto = diaMayor1 && dia <= 31;
 		}
 		return diaCorrecto && mesCorrecto && anioCorrecto;
 	}
 
-	// Método esBisiesto. Solo lo usa fechaCorrecta, por eso es privado
+	// Mï¿½todo esBisiesto. Solo lo usa fechaCorrecta, por eso es privado
 	private boolean esBisiesto() {
-		boolean esBisiesto = (a % 4 == 0 && a % 100 != 0 || a % 400 == 0);
-		return esBisiesto;
+		boolean bisiesto = anho % 4 == 0 && anho % 100 != 0 || anho % 400 == 0;
+		boolean esBisiesto = bisiesto;
+		return bisiesto;
 	}
 
-	// Método diaSiguiente
-	public void diaSiguiente() {
-		d++;
-		if (!fechaCorrecta()) {
-			d = 1;
-			m++;
-			if (!fechaCorrecta()) {
-				m = 1;
-				a++;
-			}
-		}
-	}
-
-	// Método toString
+	// Mï¿½todo toString
 	public String toString() {
-		if (d < 10 && m < 10) {
-			return "0" + d + "-0" + m + "-" + a;
-		} else if (d < 10 && m >= 10) {
-			return "0" + d + "-" + m + "-" + a;
-		} else if (d >= 10 && m < 10) {
-			return d + "-0" + m + "-" + a;
+		if (dia < 10 && mes < 10) {
+			return "0" + dia + "-0" + mes + "-" + anho;
+		} else if (dia < 10 && mes >= 10) {
+			return "0" + dia + "-" + mes + "-" + anho;
+		} else if (dia >= 10 && mes < 10) {
+			return dia + "-0" + mes + "-" + anho;
 		} else {
-			return d + "-" + m + "-" + a;
+			return dia + "-" + mes + "-" + anho;
 		}
+		
 	}
 
 }
